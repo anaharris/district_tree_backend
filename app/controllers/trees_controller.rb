@@ -1,8 +1,6 @@
 class TreesController < ApplicationController
 
   def index
-    # construct a filter based on tree_params
-
     query = generate_query(params)
     if params[:bbox].present?
       # do the bounding box query
@@ -19,14 +17,6 @@ class TreesController < ApplicationController
   def show
   end
 
-  def create
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 
   private
 

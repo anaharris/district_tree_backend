@@ -52,3 +52,5 @@ gem 'activerecord-import'
 gem 'activerecord-postgis-adapter', '~> 5.2.2'
 
 gem 'geocoder'
+
+gem "jwt", "~> 2.1"

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:create]
 
   def index
   end
@@ -7,6 +8,12 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.create(user_params)
+    if @user.valid?
+      render json: @user, status: :created
+    else
+      render json: { error: 'failed to create user' }, status: :not_acceptable
+    end
   end
 
   def update
