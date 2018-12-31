@@ -1,9 +1,9 @@
 class TreesController < ApplicationController
+  skip_before_action :authorized, only: [:index, :show]
 
   def index
     query = generate_query(params)
     if params[:bbox].present?
-      # do the bounding box query
       coords = params[:bbox].split(',')
     end
 
