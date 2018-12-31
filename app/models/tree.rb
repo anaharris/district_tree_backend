@@ -23,6 +23,18 @@ class Tree < ApplicationRecord
     } % [lon, lat, meter])
   }
 
+  scope :bbox, -> (sw_lon, sw_lat, ne_lon, ne_lat) {
+    factory = RGeo::Geographic.spherical_factory(srid: 4326, geo_type: 'point')
+    sw = factory.point(sw_lon, sw_lat)
+    nw = factory.point(sw_lon, ne_lat)
+    ne = factory.point(ne_lon, ne_lat)
+    se = factory.point(ne_lon, sw_lat)
+
+    ring = factory.linear_ring([sw, nw, ne, se])
+    bbox = factory.polygon(ring)
+    where('ST_Intersects(xy, :bbox)', bbox: bbox)
+  }
+
   # for finding trees within a certain
   # bounding box
   def self.box(sw_lon, sw_lat, ne_lon, ne_lat)
