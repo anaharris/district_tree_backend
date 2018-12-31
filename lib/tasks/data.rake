@@ -10,8 +10,8 @@ namespace :data do
 
     CSV.open('data.csv', 'w', write_headers: true, headers: headers) do |csv|
       # 1. read the CSV, remove the headers and remove the trees with no X and Y values
-      puts "reading file: Cleaned_Tree_Data.csv"
-      data = CSV.read('Cleaned_Tree_Data.csv')
+      puts "reading file: Tree_Data.csv"
+      data = CSV.read('Tree_Data.csv')
       puts "cleaning the data"
       data.shift
       data = data.reject {|t| t[0] == nil || t[1] == nil }
