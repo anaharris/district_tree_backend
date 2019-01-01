@@ -17,7 +17,6 @@ class TreesController < ApplicationController
   def show
   end
 
-
   private
 
   def spatial_query(coords, query)
