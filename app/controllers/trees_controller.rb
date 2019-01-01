@@ -8,9 +8,9 @@ class TreesController < ApplicationController
     end
 
     if params[:bbox].present?
-      render json: spatial_query(coords, query)
+      render json: spatial_query(coords, query), serializer: TreesSerializer
     else
-      render json: normal_query(query)
+      render json: normal_query(query), serializer: TreesSerializer
     end
   end
 
