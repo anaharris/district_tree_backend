@@ -4,6 +4,7 @@ class Tree < ApplicationRecord
   require 'activerecord-import/base'
   require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
+  # active import
   def self.my_import(file)
     trees = []
     puts "starting import process"
@@ -15,16 +16,14 @@ class Tree < ApplicationRecord
     Tree.import trees
   end
 
-  # for finding trees X distance from
-  # a particular point (i.e. radius)
+  # for finding trees X distance from a particular point (i.e. radius)
   scope :within, -> (lon, lat, meter) {
     where(%{
      ST_Distance(xy, 'POINT(%f %f)') < %d
     } % [lon, lat, meter])
   }
 
-  # for finding trees within a certain
-  # bounding box
+  # for finding trees within a certain bounding box
   scope :bbox, -> (sw_lon, sw_lat, ne_lon, ne_lat) {
     factory = RGeo::Geographic.spherical_factory(srid: 4326, geo_type: 'point')
     sw = factory.point(sw_lon, sw_lat)
@@ -37,6 +36,7 @@ class Tree < ApplicationRecord
     where('ST_Intersects(xy, :bbox)', bbox: bbox)
   }
 
+  # custom filters
   scope :excellent_condition, -> {
     where(condition: 'Excellent')
   }

@@ -5,7 +5,9 @@ namespace :data do
   desc "read CSV, remove trees without X and Y, delete the unnecessary columns, merge X and Y, write it to CSV file"
   task prepare: :environment do
 
+    # header names have to match the names in the corresponding table in your DB
     headers = ['xy', 'address', 'ward', 'scientific_name', 'common_name', 'disease', 'pests', 'condition', 'fam_name', 'genus_name']
+    # numbers of columns to delete from the original CSV file
     set = [2, 3, 6, 7, 8, 9, 10, 11, 12, 15, 16, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35]
 
     CSV.open('data.csv', 'w', write_headers: true, headers: headers) do |csv|
@@ -15,7 +17,7 @@ namespace :data do
       puts "cleaning the data"
       data.shift
       data = data.reject {|t| t[0] == nil || t[1] == nil }
-      # 2. delete the unnecessary columns
+      # 2. delete the unnecessary columns (numbers are in the set array on line 11)
       filtered = data.map {|t| t.delete_if.with_index {|_, index| set.include? index }; t }
       # 3. merge x and y, and save it to data.csv
       puts "about to write data to new CSV"

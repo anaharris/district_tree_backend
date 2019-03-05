@@ -1,6 +1,8 @@
 class TreesController < ApplicationController
   skip_before_action :authorized, only: [:index, :show]
 
+  QUERY_LIMIT = 500
+
   def index
     query = generate_query(params)
     if params[:bbox].present?
@@ -20,11 +22,11 @@ class TreesController < ApplicationController
   private
 
   def spatial_query(coords, query)
-    Tree.bbox(coords[0], coords[1], coords[2], coords[3]).where(query).limit(2000)
+    Tree.bbox(coords[0], coords[1], coords[2], coords[3]).where(query).limit(QUERY_LIMIT)
   end
 
   def normal_query(query)
-    Tree.where(query).limit(2000)
+    Tree.where(query).limit(QUERY_LIMIT)
   end
 
   def generate_query(params)
