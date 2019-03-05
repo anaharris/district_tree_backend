@@ -1,7 +1,7 @@
 class TreesController < ApplicationController
   skip_before_action :authorized, only: [:index, :show]
 
-  QUERY_LIMIT = 500
+  QUERY_LIMIT = 5000
 
   def index
     query = generate_query(params)
