@@ -1,7 +1,7 @@
 class TreesController < ApplicationController
   skip_before_action :authorized, only: [:index, :show]
 
-  QUERY_LIMIT = 5000
+  QUERY_LIMIT = 500
 
   def index
     query = generate_query(params)
@@ -31,7 +31,7 @@ class TreesController < ApplicationController
 
   def generate_query(params)
     query = {}
-    [:ward,:condition, :common_name, :fam_name, :genus_name].each do |key|
+    [:ward,:condition, :common_name, :fam_name, :genus_name, :scientific_name].each do |key|
       if params[key].present?
         query[key] = params[key]
       end
