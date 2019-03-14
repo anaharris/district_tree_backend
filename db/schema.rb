@@ -10,18 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_234945) do
+ActiveRecord::Schema.define(version: 2019_03_14_022904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
-
-  create_table "collections", force: :cascade do |t|
-    t.integer "tree_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "trees", force: :cascade do |t|
     t.geography "xy", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
@@ -34,16 +27,6 @@ ActiveRecord::Schema.define(version: 2018_12_28_234945) do
     t.string "condition"
     t.string "fam_name"
     t.string "genus_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "password_digest"
-    t.string "user_type"
-    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

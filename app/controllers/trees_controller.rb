@@ -1,5 +1,4 @@
 class TreesController < ApplicationController
-  skip_before_action :authorized, only: [:index, :show]
 
   QUERY_LIMIT = 500
 
