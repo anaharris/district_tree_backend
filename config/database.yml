@@ -76,8 +76,8 @@ test:
 #
 # You can use this database configuration with:
 #
-  production:
-  url: <%= ENV['DB_URL'] %>
+production:
+  url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
 #
 # production:
 #   <<: *default
