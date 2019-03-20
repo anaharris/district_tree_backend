@@ -77,7 +77,7 @@ test:
 # You can use this database configuration with:
 #
 production:
-  url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
+  url: <%= ENV.fetch('HEROKU_POSTGRESQL_AQUA_URL', '').sub(/^postgres/, "postgis") %>
 #
 # production:
 #   <<: *default
