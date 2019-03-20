@@ -8,6 +8,4 @@
 
 # Tree.my_import('./data.csv')
 
-Dir.foreach('./data') do |item|
-  Tree.my_import(item)
-end
+Dir.foreach('./data') { |f| next if !f.include?('csv'); Tree.my_import(f) }
