@@ -1,3 +1,4 @@
+xy,address,ward,scientific_name,common_name,disease,pests,condition,fam_name,genus_name
 POINT (-77.0633597092 38.954143303899997),4949 LINNEAN AVE NW,3,Ulmus americana 'Princeton',Princeton elm,,,Good,Ulmaceae,Ulmus
 POINT (-77.077636355300001 38.930741342),3044 IDAHO AVE NW,3,Quercus palustris,Pin oak,,,Fair,Fagaceae,Quercus
 POINT (-77.077969303200007 38.930345317499999),3040 IDAHO AVE NW,3,Quercus palustris,Pin oak,,,Good,Fagaceae,Quercus

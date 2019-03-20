@@ -1,3 +1,4 @@
+xy,address,ward,scientific_name,common_name,disease,pests,condition,fam_name,genus_name
 POINT (-77.095614730899996 38.950169865399999),4608 ASBURY PL NW,3,Acer saccharum,Sugar maple,,,Good,Aceraceae,Acer
 POINT (-76.930154545400001 38.904206234699998),1014 50th PL NE,7,Ulmus americana,American elm,,,Good,Ulmaceae,Ulmus
 POINT (-76.930158435799996 38.904133619),1014 50th Pl NE,7,Ulmus americana,American elm,,,Good,Ulmaceae,Ulmus
